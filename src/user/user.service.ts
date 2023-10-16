@@ -7,15 +7,16 @@ import { Model } from 'mongoose';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(Users.name) private userModel: Model<UsersDocument>,
+    @InjectModel(Users.name) private usersModel: Model<UsersDocument>,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const createUser = new this.userModel(CreateUserDto);
+    const createUser = new this.usersModel(createUserDto);
     let user = await createUser.save();
     return user;
   }
+
   async findAll() {
-    return await this.userModel.find();
+    return await this.usersModel.find();
   }
 }
