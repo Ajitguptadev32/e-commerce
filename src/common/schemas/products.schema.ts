@@ -3,14 +3,14 @@ export type ProductsDocument = Products & Document;
 
 @Schema({ timestamps: true, collection: 'Products' })
 export class Products {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: false })
   title: string;
 
   @Prop({ required: true, select: false })
-  description: number;
+  description: string;
 
   @Prop({ required: false })
-  price: string;
+  price: number;
 
   @Prop({ required: false })
   category: string;

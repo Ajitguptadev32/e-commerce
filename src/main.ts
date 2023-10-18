@@ -26,8 +26,8 @@ async function bootstrap() {
       },
     });
 
-  app.useGlobalPipes(new ValidationPipe());
-  await app.listen(configService.get<string>('PORT'));
-  Logger.log(`Services running at PORT ${configService.get<string>('PORT')}`);
+  const port = configService.get<number>('PORT') || 3000; // Default to port 3000 if PORT is not specified in the config
+  await app.listen(port);
+  Logger.log(`Services running at PORT ${port}`);
 }
 bootstrap();
